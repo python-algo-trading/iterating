@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from core.trader.ATrader import ATrader
+from AlgoTrader.core.trader.ATrader import ATrader
 
 
 class Iterator:
