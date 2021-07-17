@@ -7,5 +7,5 @@ setup(
    author='Viktor Vasilyev',
    author_email='an.viktory@gmail.com',
    packages=['AlgoTrader'],
-   install_requires=['pandas', 'numpy', 'matplotlib'],
+   install_requires=['pandas', 'numpy', 'matplotlib', 'requests'],
 )
