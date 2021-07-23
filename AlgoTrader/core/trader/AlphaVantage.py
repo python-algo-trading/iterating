@@ -25,3 +25,18 @@ class AlphaVantage:
 
         r = requests.get(url, params=payload)
         return pd.read_csv(StringIO(r.text))
+
+    def get_forex_daily_dataframe(self, from_symbol, to_symbol):
+        url = 'https://www.alphavantage.co/query'
+        payload = {
+            'function': 'FX_DAILY',
+            'from_symbol': from_symbol,
+            'to_symbol': to_symbol,
+            'apikey': self.apikey,
+            'datatype': 'csv',
+            'outputsize': 'full'
+
+        }
+
+        r = requests.get(url, params=payload)
+        return pd.read_csv(StringIO(r.text))
