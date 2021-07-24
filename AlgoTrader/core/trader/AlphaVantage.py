@@ -40,3 +40,18 @@ class AlphaVantage:
 
         r = requests.get(url, params=payload)
         return pd.read_csv(StringIO(r.text))
+    
+    def get_crypto_daily_dataframe(self, crypto_currency):
+        url = 'https://www.alphavantage.co/query'
+        payload = {
+            'function': 'DIGITAL_CURRENCY_DAILY',
+            'symbol': crypto_currency,
+            'market': 'USD',
+            'apikey': self.apikey,
+            'datatype': 'csv',
+            'outputsize': 'full'
+
+        }
+
+        r = requests.get(url, params=payload)
+        return pd.read_csv(StringIO(r.text))
