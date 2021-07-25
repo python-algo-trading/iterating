@@ -69,3 +69,18 @@ class AlphaVantage:
 
         r = requests.get(url, params=payload)
         return pd.read_csv(StringIO(r.text))
+
+    def get_crypto_intra_dataframe(self, crypto_currency):
+        payload = {
+            'function': 'CRYPTO_INTRADAY',
+            'symbol': crypto_currency,
+            'market': 'USD',
+            'apikey': self.apikey,
+            'datatype': 'csv',
+            'outputsize': 'full',
+            'interval': '1min'
+
+        }
+
+        r = requests.get(self.url, params=payload)
+        return pd.read_csv(StringIO(r.text))
