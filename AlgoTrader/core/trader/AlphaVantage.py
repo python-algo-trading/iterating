@@ -7,6 +7,7 @@ API_KEY = '771S6K1TQH832PEU'
 
 
 class AlphaVantage:
+    url = 'https://www.alphavantage.co/query'
 
     def __init__(self):
         self.apikey = API_KEY
@@ -39,6 +40,19 @@ class AlphaVantage:
         }
 
         r = requests.get(url, params=payload)
+        return pd.read_csv(StringIO(r.text))
+
+    def get_forex_intraday_dataframe(self, from_symbol, to_symbol):
+        payload = {
+            'function': 'FX_INTRADAY',
+            'from_symbol': from_symbol,
+            'to_symbol': to_symbol,
+            'apikey': self.apikey,
+            'datatype': 'csv',
+            'outputsize': 'full',
+            'interval': '1min'
+        }
+        r = requests.get(self.url, params=payload)
         return pd.read_csv(StringIO(r.text))
     
     def get_crypto_daily_dataframe(self, crypto_currency):
