@@ -50,7 +50,7 @@ class AlphaVantage:
             'apikey': self.apikey,
             'datatype': 'csv',
             'outputsize': 'full',
-            'interval': '1min'
+            'interval': '5min'
         }
         r = requests.get(self.url, params=payload)
         return pd.read_csv(StringIO(r.text))
@@ -78,7 +78,7 @@ class AlphaVantage:
             'apikey': self.apikey,
             'datatype': 'csv',
             'outputsize': 'full',
-            'interval': '1min'
+            'interval': '5min'
 
         }
 
