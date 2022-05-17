@@ -1,4 +1,4 @@
-{
+var = {
  "cells": [
   {
    "cell_type": "code",
